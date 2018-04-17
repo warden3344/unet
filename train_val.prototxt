@@ -1,70 +1,18 @@
 name:"UNET"
 layer {
   name: "data"
-  type: "Data"
-  top: "data"
-  include {
-    phase: TRAIN
-  }
-  transform_param {
-    mean_value: 104.00699
-    mean_value: 116.66877
-    mean_value: 122.67892
-  }
-  data_param {
-    source: "../../data/pascal-context/pascal-context-train-lmdb"
-    batch_size: 1
-    backend: LMDB
-  }
-}
-layer {
-  name: "label"
-  type: "Data"
-  top: "label"
-  include {
-    phase: TRAIN
-  }
-  data_param {
-    source: "../../data/pascal-context/pascal-context-train-gt59-lmdb"
-    batch_size: 1
-    backend: LMDB
-  }
-}
-layer {
-  name: "data"
-  type: "Data"
-  top: "data"
-  include {
-    phase: TEST
-  }
-  transform_param {
-    mean_value: 104.00699
-    mean_value: 116.66877
-    mean_value: 122.67892
-  }
-  data_param {
-    source: "../../data/pascal-context/pascal-context-val-lmdb"
-    batch_size: 1
-    backend: LMDB
-  }
-}
-layer {
-  name: "label"
-  type: "Data"
-  top: "label"
-  include {
-    phase: TEST
-  }
-  data_param {
-    source: "../../data/pascal-context/pascal-context-val-gt59-lmdb"
-    batch_size: 1
-    backend: LMDB
-  }
+  type: "Python"
+  top: "img"
+  top: "mask"
+  python_param{
+    module: 'mydatalayer'
+    layer: 'DataLayer'
+	}
 }
 layer {
   name: "conv1_1"
   type: "Convolution"
-  bottom: "data"
+  bottom: "img"
   top: "conv1_1"
   param {
     lr_mult: 1
@@ -335,6 +283,11 @@ layer {
     bottom: 'conv4_2'
     bottom: 'upscore1'
     top: 'crop1'
+    crop_param {
+    axis: 2
+    offset: 4
+    offset: 4
+  }
 }
 layer {
     name: "concat1"
@@ -406,6 +359,11 @@ layer {
     bottom: 'conv3_2'
     bottom: 'upscore2'
     top: 'crop2'
+    crop_param {
+    axis: 2
+    offset: 16
+    offset: 16
+  }
 }
 layer {
     name: "concat2"
@@ -477,6 +435,11 @@ layer {
     bottom: 'conv2_2'
     bottom: 'upscore3'
     top: 'crop3'
+    crop_param {
+    axis: 2
+    offset: 40
+    offset: 40
+  }
 }
 layer {
     name: "concat3"
@@ -548,6 +511,11 @@ layer {
     bottom: 'conv1_2'
     bottom: 'upscore4'
     top: 'crop4'
+    crop_param {
+    axis: 2
+    offset: 88
+    offset: 88
+  }
 }
 layer {
     name: "concat4"
@@ -617,11 +585,26 @@ layer {
   }
 }
 layer {
+    name: 'crop5'
+    type: 'Crop'
+    bottom: 'mask'
+    bottom: 'score'
+    top: 'crop5'
+    crop_param {
+    axis: 2
+    offset: 92
+    offset: 92
+  }
+}
+layer {
   name: "loss"
   type: "SoftmaxWithLoss"
   bottom: "score"
-  bottom: "label"
+  bottom: "crop5"
   top: "loss"
+   include {
+    phase: TRAIN
+  }
   loss_param {
     normalize: false
   }
