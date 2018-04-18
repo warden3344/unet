@@ -602,9 +602,8 @@ layer {
   bottom: "score"
   bottom: "crop5"
   top: "loss"
-   include {
-    phase: TRAIN
-  }
+  propagate_down: true
+  propagate_down: false
   loss_param {
     normalize: false
   }
