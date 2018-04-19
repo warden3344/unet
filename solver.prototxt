@@ -3,12 +3,12 @@ test_iter: 10
 test_interval: 100
 display: 20
 lr_policy: "fixed"
-base_lr: 0.00001
+base_lr: 0.001
 
 momentum: 0.9
 iter_size: 1
 max_iter: 1000
 weight_decay: 0.0005
-snapshot: 10000
+snapshot: 100
 snapshot_prefix: "train"
 test_initialization: false
