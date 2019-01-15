@@ -1,5 +1,5 @@
 #!/bin/sh
-cd /home/wangbin/test/unet/
+cd /home/to/unet/
 pwd
-export PYTHONPATH=/home/wangbin/test/unet:$PYTHONPATH
-/home/wangbin/caffe-master/build/tools/caffe train --solver=solver.prototxt
+export PYTHONPATH=/path/to/unet:$PYTHONPATH
+/home/to/caffe train --solver=solver.prototxt
