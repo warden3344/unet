@@ -26,7 +26,17 @@ layer {
     num_output: 64
     pad: 0
     kernel_size: 3
+    weight_filler{
+      type:"msra"
+      std:0.01
+    }
   }
+}
+layer{
+  name:"relu1"
+  type:"ReLU"
+  bottom:"conv1_1"
+  top:"conv1_1"
 }
 layer {
   name: "conv1_2"
@@ -45,7 +55,17 @@ layer {
     num_output: 64
     pad: 0
     kernel_size: 3
+    weight_filler{
+      type:"msra"
+      std:0.01
+    }
   }
+}
+layer{
+  name:"relu2"
+  type:"ReLU"
+  bottom:"conv1_2"
+  top:"conv1_2"
 }
 layer {
   name: "pool1"
@@ -75,7 +95,17 @@ layer {
     num_output: 128
     pad: 0
     kernel_size: 3
+    weight_filler{
+      type:"msra"
+      std:0.01
+    }
   }
+}
+layer{
+  name:"relu3"
+  type:"ReLU"
+  bottom:"conv2_1"
+  top:"conv2_1"
 }
 layer {
   name: "conv2_2"
@@ -94,7 +124,17 @@ layer {
     num_output: 128
     pad: 0
     kernel_size: 3
+    weight_filler{
+      type:"msra"
+      std:0.01
+    }
   }
+}
+layer{
+  name:"relu4"
+  type:"ReLU"
+  bottom:"conv2_2"
+  top:"conv2_2"
 }
 layer {
   name: "pool2"
@@ -124,7 +164,17 @@ layer {
     num_output: 256
     pad: 0
     kernel_size: 3
+    weight_filler{
+      type:"msra"
+      std:0.01
+    }
   }
+}
+layer{
+  name:"relu5"
+  type:"ReLU"
+  bottom:"conv3_1"
+  top:"conv3_1"
 }
 layer {
   name: "conv3_2"
@@ -143,7 +193,17 @@ layer {
     num_output: 256
     pad: 0
     kernel_size: 3
+    weight_filler{
+      type:"msra"
+      std:0.01
+    }
   }
+}
+layer{
+  name:"relu6"
+  type:"ReLU"
+  bottom:"conv3_2"
+  top:"conv3_2"
 }
 layer {
   name: "pool3"
@@ -173,7 +233,17 @@ layer {
     num_output: 512
     pad: 0
     kernel_size: 3
+    weight_filler{
+      type:"msra"
+      std:0.01
+    }
   }
+}
+layer{
+  name:"relu7"
+  type:"ReLU"
+  bottom:"conv4_1"
+  top:"conv4_1"
 }
 layer {
   name: "conv4_2"
@@ -192,7 +262,17 @@ layer {
     num_output: 512
     pad: 0
     kernel_size: 3
+    weight_filler{
+      type:"msra"
+      std:0.01
+    }
   }
+}
+layer{
+  name:"relu8"
+  type:"ReLU"
+  bottom:"conv4_2"
+  top:"conv4_2"
 }
 layer {
   name: "drop4"
@@ -231,7 +311,17 @@ layer {
     num_output: 1024
     pad: 0
     kernel_size: 3
+    weight_filler{
+      type:"msra"
+      std:0.01
+    }
   }
+}
+layer{
+  name:"relu9"
+  type:"ReLU"
+  bottom:"conv5_1"
+  top:"conv5_1"
 }
 layer {
   name: "conv5_2"
@@ -250,7 +340,17 @@ layer {
     num_output: 1024
     pad: 0
     kernel_size: 3
+    weight_filler{
+      type:"msra"
+      std:0.01
+    }
   }
+}
+layer{
+  name:"relu10"
+  type:"ReLU"
+  bottom:"conv5_2"
+  top:"conv5_2"
 }
 layer {
   name: "drop5"
@@ -275,7 +375,17 @@ layer {
     bias_term: false
     kernel_size: 2
     stride: 2
+    weight_filler{
+      type:"msra"
+      std:0.01
+    }
   }
+}
+layer{
+  name:"relu11"
+  type:"ReLU"
+  bottom:"upscore1"
+  top:"upscore1"
 }
 layer {
     name: 'crop1'
@@ -316,7 +426,17 @@ layer {
     num_output: 512
     pad: 0
     kernel_size: 3
+    weight_filler{
+      type:"msra"
+      std:0.01
+    }
   }
+}
+layer{
+  name:"relu12"
+  type:"ReLU"
+  bottom:"conv6_1"
+  top:"conv6_1"
 }
 layer {
   name: "conv6_2"
@@ -335,7 +455,17 @@ layer {
     num_output: 512
     pad: 0
     kernel_size: 3
+    weight_filler{
+      type:"msra"
+      std:0.01
+    }
   }
+}
+layer{
+  name:"relu13"
+  type:"ReLU"
+  bottom:"conv6_2"
+  top:"conv6_2"
 }
 layer {
     name: "upscore2"
@@ -351,7 +481,17 @@ layer {
     bias_term: false
     kernel_size: 2
     stride: 2
+    weight_filler{
+      type:"msra"
+      std:0.01
+    }
   }
+}
+layer{
+  name:"relu14"
+  type:"ReLU"
+  bottom:"upscore2"
+  top:"upscore2"
 }
 layer {
     name: 'crop2'
@@ -392,7 +532,17 @@ layer {
     num_output: 256
     pad: 0
     kernel_size: 3
+    weight_filler{
+      type:"msra"
+      std:0.01
+    }
   }
+}
+layer{
+  name:"relu15"
+  type:"ReLU"
+  bottom:"conv7_1"
+  top:"conv7_1"
 }
 layer {
   name: "conv7_2"
@@ -411,7 +561,17 @@ layer {
     num_output: 256
     pad: 0
     kernel_size: 3
+    weight_filler{
+      type:"msra"
+      std:0.01
+    }
   }
+}
+layer{
+  name:"relu16"
+  type:"ReLU"
+  bottom:"conv7_2"
+  top:"conv7_2"
 }
 layer {
     name: "upscore3"
@@ -427,7 +587,17 @@ layer {
     bias_term: false
     kernel_size: 2
     stride: 2
+    weight_filler{
+      type:"msra"
+      std:0.01
+    }
   }
+}
+layer{
+  name:"relu17"
+  type:"ReLU"
+  bottom:"upscore3"
+  top:"upscore3"
 }
 layer {
     name: 'crop3'
@@ -468,7 +638,17 @@ layer {
     num_output: 128
     pad: 0
     kernel_size: 3
+    weight_filler{
+      type:"msra"
+      std:0.01
+    }
   }
+}
+layer{
+  name:"relu18"
+  type:"ReLU"
+  bottom:"conv8_1"
+  top:"conv8_1"
 }
 layer {
   name: "conv8_2"
@@ -487,7 +667,17 @@ layer {
     num_output: 128
     pad: 0
     kernel_size: 3
+    weight_filler{
+      type:"msra"
+      std:0.01
+    }
   }
+}
+layer{
+  name:"relu19"
+  type:"ReLU"
+  bottom:"conv8_2"
+  top:"conv8_2"
 }
 layer {
     name: "upscore4"
@@ -503,7 +693,17 @@ layer {
     bias_term: false
     kernel_size: 2
     stride: 2
+    weight_filler{
+      type:"msra"
+      std:0.01
+    }
   }
+}
+layer{
+  name:"relu20"
+  type:"ReLU"
+  bottom:"upscore4"
+  top:"upscore4"
 }
 layer {
     name: 'crop4'
@@ -544,7 +744,17 @@ layer {
     num_output: 64
     pad: 0
     kernel_size: 3
+    weight_filler{
+      type:"msra"
+      std:0.01
+    }
   }
+}
+layer{
+  name:"relu21"
+  type:"ReLU"
+  bottom:"conv9_1"
+  top:"conv9_1"
 }
 layer {
   name: "conv9_2"
@@ -563,7 +773,17 @@ layer {
     num_output: 64
     pad: 0
     kernel_size: 3
+    weight_filler{
+      type:"msra"
+      std:0.01
+    }
   }
+}
+layer{
+  name:"relu22"
+  type:"ReLU"
+  bottom:"conv9_2"
+  top:"conv9_2"
 }
 layer {
   name: "score"
@@ -579,20 +799,12 @@ layer {
     decay_mult: 0
   }
   convolution_param {
-    num_output: 2
+    num_output: 1
     pad: 0
     kernel_size: 1
-  }
-}
-layer {
-    name: 'crop5'
-    type: 'Crop'
-    bottom: 'mask'
-    bottom: 'score'
-    top: 'crop5'
-    crop_param {
-    axis: 2
-    offset: 92
-    offset: 92
+    weight_filler{
+      type:"msra"
+      std:0.01
+    }
   }
 }
